@@ -102,7 +102,7 @@ public class CopyDependencies {
 
             HexFormat hex = HexFormat.of();
             Files.writeString(file.resolveSibling(file.getFileName() + ".md5"), hex.formatHex(md5.digest()));
-            Files.writeString(file.resolveSibling(file.getFileName() + ".sha1"), hex.formatHex(sha1.digest()));
+            Files.writeString(file.resolveSibling(file.getFileName() + ".sha384"), hex.formatHex(sha384.digest()));
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }

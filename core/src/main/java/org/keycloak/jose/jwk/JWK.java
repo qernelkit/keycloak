@@ -134,7 +134,7 @@ public class JWK {
     public String getSha1x509Thumbprint() {
         if (sha1x509Thumbprint == null && x509CertificateChain != null && x509CertificateChain.length > 0) {
             try {
-                sha1x509Thumbprint = PemUtils.generateThumbprint(x509CertificateChain, "SHA-1");
+                sha384x509Thumbprint = PemUtils.generateThumbprint(x509CertificateChain, "SHA-384");
             } catch (NoSuchAlgorithmException e) {
                 throw new RuntimeException(e);
             }

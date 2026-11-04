@@ -120,7 +120,7 @@ public abstract class JWKTest {
 
         assertArrayEquals(expectedChain, ((RSAPublicJWK) jwk).getX509CertificateChain());
         assertNotNull(((RSAPublicJWK) jwk).getSha1x509Thumbprint());
-        assertEquals(PemUtils.generateThumbprint(((RSAPublicJWK) jwk).getX509CertificateChain(), "SHA-1"), ((RSAPublicJWK) jwk).getSha1x509Thumbprint());
+        assertEquals(PemUtils.generateThumbprint(((RSAPublicJWK) jwk).getX509CertificateChain(), "SHA-384"), ((RSAPublicJWK) jwk).getSha384x509Thumbprint());
         assertNotNull(((RSAPublicJWK) jwk).getSha256x509Thumbprint());
         assertEquals(PemUtils.generateThumbprint(((RSAPublicJWK) jwk).getX509CertificateChain(), "SHA-256"), ((RSAPublicJWK) jwk).getSha256x509Thumbprint());
 

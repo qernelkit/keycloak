@@ -116,7 +116,7 @@ public class BCOCSPProvider extends OCSPProvider {
 
             DigestCalculatorProvider dcp = new JcaDigestCalculatorProviderBuilder().build();
 
-            DigestCalculator digCalc = dcp.get(CertificateID.HASH_SHA1);
+            DigestCalculator digCalc = dcp.get(CertificateID.HASH_SHA384);
 
             JcaCertificateID certificateID = new JcaCertificateID(digCalc, issuerCertificate, cert.getSerialNumber());
 

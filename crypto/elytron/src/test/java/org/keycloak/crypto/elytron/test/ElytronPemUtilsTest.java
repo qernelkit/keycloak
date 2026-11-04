@@ -37,7 +37,7 @@ public class ElytronPemUtilsTest {
     @Test
         public void testGenerateThumbprintSha1() throws NoSuchAlgorithmException {
         String[] test = new String[] {"abcdefg"};
-        String encoded = org.keycloak.common.util.PemUtils.generateThumbprint(test, "SHA-1");
+        String encoded = org.keycloak.common.util.PemUtils.generateThumbprint(test, "SHA-384");
         assertEquals(27, encoded.length());
     }
 

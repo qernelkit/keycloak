@@ -72,7 +72,7 @@ public class RSAPublicJWK extends JWK {
         this.x509CertificateChain = x509CertificateChain;
         if (x509CertificateChain != null && x509CertificateChain.length > 0) {
             try {
-                sha1x509Thumbprint = PemUtils.generateThumbprint(x509CertificateChain, "SHA-1");
+                sha384x509Thumbprint = PemUtils.generateThumbprint(x509CertificateChain, "SHA-384");
                 sha256x509Thumbprint = PemUtils.generateThumbprint(x509CertificateChain, "SHA-256");
             } catch (NoSuchAlgorithmException e) {
                 throw new RuntimeException(e);
