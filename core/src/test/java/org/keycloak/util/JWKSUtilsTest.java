@@ -20,6 +20,8 @@ package org.keycloak.util;
 import org.keycloak.crypto.KeyUse;
 import org.keycloak.crypto.KeyWrapper;
 import org.keycloak.crypto.PublicKeysWrapper;
+import org.keycloak.jose.jwk.AKPPublicJWK;
+import org.keycloak.jose.jwk.AKPSamples;
 import org.keycloak.jose.jwk.ECPublicJWK;
 import org.keycloak.jose.jwk.JSONWebKeySet;
 import org.keycloak.jose.jwk.JWK;
@@ -182,5 +184,16 @@ public abstract class JWKSUtilsTest {
         assertEquals("EC", key.getType());
     }
 
+    @Test
+    public void akpThumbprintMatchesSampleKids() throws Exception {
+        // The ML-DSA examples' kids are their RFC 7638 thumbprints over alg, kty and pub
+        for (String sample : new String[] { AKPSamples.ML_DSA_44, AKPSamples.ML_DSA_65, AKPSamples.ML_DSA_87 }) {
+            JWK jwk = JsonSerialization.readValue(sample, JWK.class);
+            assertEquals(jwk.getKeyId(), JWKSUtils.computeThumbprint(jwk));
+
+            AKPPublicJWK akp = JsonSerialization.readValue(sample, AKPPublicJWK.class);
+            assertEquals(jwk.getKeyId(), JWKSUtils.computeThumbprint(akp));
+        }
+    }
 
 }
